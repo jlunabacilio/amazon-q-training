@@ -3,18 +3,16 @@ package com.example.flightreservations.config;
 import com.example.flightreservations.entity.Reservation;
 import com.example.flightreservations.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class DataInitializer implements CommandLineRunner {
+public class DataInitializer {
 
     @Autowired
     private ReservationRepository reservationRepository;
 
-    @Override
-    public void run(String... args) throws Exception {
+    public void initializeData() {
         if (reservationRepository.count() == 0) {
             reservationRepository.save(new Reservation("AA101", "Juan Pérez", "juan.perez@email.com", 
                 LocalDateTime.of(2024, 3, 15, 10, 30), 12));

@@ -9,9 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    
     @Query("SELECT r.seatNumber FROM Reservation r WHERE r.flightNumber = :flightNumber")
     List<Integer> findOccupiedSeatsByFlightNumber(@Param("flightNumber") String flightNumber);
-    
     boolean existsByFlightNumberAndSeatNumber(String flightNumber, Integer seatNumber);
 }

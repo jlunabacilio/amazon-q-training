@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class ReservationService {
-
     @Autowired
     private ReservationRepository reservationRepository;
 
@@ -20,10 +19,6 @@ public class ReservationService {
     public Reservation getReservationById(Long id) {
         return reservationRepository.findById(id)
                 .orElseThrow(() -> new ReservationNotFoundException("Reservación no encontrada con ID: " + id));
-    }
-
-    public boolean isSeatAvailable(String flightNumber, Integer seatNumber) {
-        return !reservationRepository.existsByFlightNumberAndSeatNumber(flightNumber, seatNumber);
     }
 
     public List<Integer> getOccupiedSeats(String flightNumber) {

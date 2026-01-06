@@ -9,26 +9,23 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
     @ExceptionHandler(ReservationNotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleReservationNotFound(ReservationNotFoundException ex) {
-        Map<String, Object> errorResponse = Map.of(
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of(
             "timestamp", LocalDateTime.now(),
             "status", HttpStatus.NOT_FOUND.value(),
             "error", "Not Found",
             "message", ex.getMessage()
-        );
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+        ));
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGenericException(Exception ex) {
-        Map<String, Object> errorResponse = Map.of(
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
             "timestamp", LocalDateTime.now(),
             "status", HttpStatus.INTERNAL_SERVER_ERROR.value(),
             "error", "Internal Server Error",
             "message", "Error interno del servidor"
-        );
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+        ));
     }
 }

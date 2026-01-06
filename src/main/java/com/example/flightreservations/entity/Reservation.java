@@ -48,25 +48,18 @@ public class Reservation {
         this.seatNumber = seatNumber;
     }
 
-    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-
     public String getFlightNumber() { return flightNumber; }
     public void setFlightNumber(String flightNumber) { this.flightNumber = flightNumber; }
-
     public String getPassengerName() { return passengerName; }
     public void setPassengerName(String passengerName) { this.passengerName = passengerName; }
-
     public String getPassengerEmail() { return passengerEmail; }
     public void setPassengerEmail(String passengerEmail) { this.passengerEmail = passengerEmail; }
-
     public LocalDateTime getDepartureDate() { return departureDate; }
     public void setDepartureDate(LocalDateTime departureDate) { this.departureDate = departureDate; }
-
     public Integer getSeatNumber() { return seatNumber; }
     public void setSeatNumber(Integer seatNumber) { this.seatNumber = seatNumber; }
-
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 }

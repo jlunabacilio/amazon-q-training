@@ -11,20 +11,17 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/reservations")
 public class ReservationController {
-
     @Autowired
     private ReservationService reservationService;
 
     @GetMapping
     public ResponseEntity<List<Reservation>> getAllReservations() {
-        List<Reservation> reservations = reservationService.getAllReservations();
-        return ResponseEntity.ok(reservations);
+        return ResponseEntity.ok(reservationService.getAllReservations());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Reservation> getReservationById(@PathVariable Long id) {
-        Reservation reservation = reservationService.getReservationById(id);
-        return ResponseEntity.ok(reservation);
+        return ResponseEntity.ok(reservationService.getReservationById(id));
     }
 
     @GetMapping("/availability/{flightNumber}")
